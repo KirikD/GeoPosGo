@@ -34,8 +34,8 @@ namespace ARLocation.Utils
         }
         void ScenManagerReload()
         {
-            int scene = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(scene, LoadSceneMode.Single);
+            Scene sceneS = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(sceneS.name, LoadSceneMode.Single);
          }
             // Use this for initialization
             void Awake()
