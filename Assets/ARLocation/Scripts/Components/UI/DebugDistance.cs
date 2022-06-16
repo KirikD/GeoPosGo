@@ -30,7 +30,8 @@ namespace ARLocation.UI
                 {
                     lineRenderer.material = new Material(shader)
                     {
-                        color = new Color(0.3960f, 0.6901f, 0.9725f)
+                      
+                        color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f))
                     };
                 }
             }
@@ -41,8 +42,10 @@ namespace ARLocation.UI
             lineRenderer.shadowCastingMode = ShadowCastingMode.Off;
             lineRenderer.allowOcclusionWhenDynamic = false;
             lineRenderer.positionCount = 2;
-            lineRenderer.startWidth = 0.1f;
-            lineRenderer.endWidth = 0.1f;
+            lineRenderer.startWidth = 0.05f;
+            lineRenderer.endWidth = 0.5f;
+            lineRenderer.material.color = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.5f, 1.5f), Random.Range(0.5f, 1.5f));
+            
 
             textMeshGo = new GameObject(gameObject.name + "_text");
             textMeshGo.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
@@ -62,7 +65,7 @@ namespace ARLocation.UI
 
             lineRenderer.SetPosition(0, startPos);
             lineRenderer.SetPosition(1, endPos);
-
+            lineRenderer.material.SetTextureScale("_MainTex", new Vector2(endPos.magnitude, 1));
             var textPos = startPos + lineDir * 6.0f;
 
             LocatCanvasBtt.transform.position = textPos;
